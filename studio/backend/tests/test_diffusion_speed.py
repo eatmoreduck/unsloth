@@ -1373,6 +1373,8 @@ def test_the_loader_keys_the_compile_bundle_on_the_vae_decode_decision():
     # artifacts are never saved: the key has to move with the decision.
     from pathlib import Path
 
-    src = (Path(__file__).resolve().parents[1] / "core" / "inference" / "diffusion.py").read_text()
+    src = (Path(__file__).resolve().parents[1] / "core" / "inference" / "diffusion.py").read_text(
+        encoding = "utf-8"
+    )
     assert src.count('"vae_decode": vae_decode_compile_allowed(') == 2
     assert ds_mod.vae_decode_compile_allowed is not None
